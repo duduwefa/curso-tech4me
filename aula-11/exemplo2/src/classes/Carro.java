@@ -1,7 +1,8 @@
 package classes;
 import excecao.ExcecaoPlacaInvalida;
+import interfaces2.Acelerador;
 
-public class Carro {
+public class Carro implements Acelerador {
     private String letrasPlaca;
     private int numerosPlaca;
     private int numChassi;
@@ -67,11 +68,13 @@ public class Carro {
     }
 
     //Métodos
+    @Override
     public void acelerar() {
         velocidadeAtual++;
     }
 
     //Sobrecarga de métodos
+    @Override
     public void acelerar(int limite) {
         for (int i = 0; i < limite; i++) {
             acelerar();

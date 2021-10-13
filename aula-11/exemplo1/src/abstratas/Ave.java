@@ -1,6 +1,6 @@
 package abstratas;
 
-public abstract class Ave {
+public abstract class Ave extends Animal {
 
 	public abstract void voar();
 }

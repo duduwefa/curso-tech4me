@@ -1,6 +1,6 @@
 package interfaces;
 
-public abstract class /* interface */ AnimalEstimacao {
+public interface AnimalEstimacao {
 
 	void brincar();
 	void levarPassear();
