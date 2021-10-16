@@ -71,7 +71,7 @@ public class ProdutoController {
     @DeleteMapping(value="/{id}")
     public ResponseEntity<String> removerProduto(@PathVariable String id) {
         servico.removerProduto(id);
-        return new ResponseEntity<String>("Deletado com sucesso!", HttpStatus.OK);
+        return new ResponseEntity<>("Deletado com sucesso!", HttpStatus.OK);
     }
 
     @PutMapping(value="/{id}")
