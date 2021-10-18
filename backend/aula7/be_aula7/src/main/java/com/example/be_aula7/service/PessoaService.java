@@ -9,4 +9,6 @@ public interface PessoaService {
     Pessoa obterPorId(String id);
     void removerPessoa(String id);
     Pessoa atualizarPessoa(String id, Pessoa pessoa);
+
+    Optional<Pessoa> obterPorIdComOptional(String id);
 }

@@ -1,4 +1,4 @@
-package com.example.be_aula7.controller;
+package com.example.be_aula7.view.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +29,7 @@ public class PessoaController {
     @Autowired
     private PessoaService servico;
 
-    //Aula 7
+    
     @GetMapping
     public ResponseEntity<List<Pessoa>> obterTodos() {
         return new ResponseEntity<>(servico.obterTodos(), HttpStatus.OK);
@@ -54,6 +54,19 @@ public class PessoaController {
     public ResponseEntity<String> removerPessoa(@PathVariable String id) {
         servico.removerPessoa(id);
         return new ResponseEntity<String>("Removido com sucesso!", HttpStatus.OK);
+    }
+
+    //-------------------
+
+    @GetMapping(value="/optional/{id}")
+    public ResponseEntity<Pessoa> obterPorIdComOptional(@PathVariable String id) {
+        Optional<Pessoa> pessoa = servico.obterPorIdComOptional(id);
+
+        if(pessoa.isPresent()) {
+            return new ResponseEntity<>(pessoa.get(), HttpStatus.OK);
+        }
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);        
     }
 
 }
