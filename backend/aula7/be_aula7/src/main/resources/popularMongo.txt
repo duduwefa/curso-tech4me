@@ -1,0 +1,8 @@
+db.pessoas.insertMany([
+{"nome":"Bruce","sobrenome":"Banner"},
+{"nome":"Tony","sobrenome":"Stark"},
+{"nome":"King","sobrenome":"T’Challa"},
+{"nome":"Clint","sobrenome":"Barton"},
+{"nome":"Steve","sobrenome":"Rogers"},
+{"nome":"Natasha","sobrenome":"Romanoff"}
+])
