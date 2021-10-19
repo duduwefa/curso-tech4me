@@ -2,10 +2,13 @@ package com.example.be_aula7.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import com.example.be_aula7.compartilhado.PessoaDto;
 import com.example.be_aula7.model.Pessoa;
 import com.example.be_aula7.repository.PessoaRepository;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,19 +18,39 @@ public class PessoaServiceImpl implements PessoaService {
     @Autowired
     private PessoaRepository repositorio;
 
+    ModelMapper mapper = new ModelMapper();
+
     @Override
-    public Pessoa criarPessoa(Pessoa pessoa) {
-        return repositorio.save(pessoa);
+    public PessoaDto criarPessoa(PessoaDto pessoaDto) {
+        Pessoa pessoa = mapper.map(pessoaDto, Pessoa.class);
+        pessoa = repositorio.save(pessoa);
+        PessoaDto dto = mapper.map(pessoa, PessoaDto.class);
+
+        return dto;
     }
 
     @Override
-    public List<Pessoa> obterTodos() {
-        return repositorio.findAll();
+    public List<PessoaDto> obterTodos() {
+        List<Pessoa> pessoas = repositorio.findAll();
+        List<PessoaDto> pessoaDto = 
+        pessoas.
+        stream().
+        map(p -> mapper.map(p, PessoaDto.class)).
+        collect(Collectors.toList());
+
+        return pessoaDto;
     }
 
     @Override
-    public Pessoa obterPorId(String id) {
-        return repositorio.findById(id).get();
+    public Optional<PessoaDto> obterPorId(String id) {
+        Optional<Pessoa> pessoa = repositorio.findById(id);
+
+        if(pessoa.isPresent()) {
+            PessoaDto pessoaDto = mapper.map(pessoa.get(), PessoaDto.class);
+            return Optional.of(pessoaDto);
+        }
+
+        return Optional.empty();
     }
 
     @Override
@@ -36,9 +59,15 @@ public class PessoaServiceImpl implements PessoaService {
     }
 
     @Override
-    public Pessoa atualizarPessoa(String id, Pessoa pessoa) {
+    public PessoaDto atualizarPessoa(String id, PessoaDto pessoaDto) {
+        Pessoa pessoa = mapper.map(pessoaDto, Pessoa.class);
+        
         pessoa.setId(id);
-        return repositorio.save(pessoa);
+        pessoa = repositorio.save(pessoa);
+
+        PessoaDto dto = mapper.map(pessoa, PessoaDto.class);
+
+        return dto;
     }
 
     @Override
