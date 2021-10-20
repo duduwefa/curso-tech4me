@@ -1,11 +1,14 @@
 {
 	"folders": [
 		{
-			"path": "../../../../jdk/projects/be_aula7"
-		},
-		{
 			"name": "eureka-server",
 			"path": "eureka-server"
+		},
+		{
+			"path": "../../../../jdk/microsservicos/pessoas-ms"
 		}
-	]
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
 }
