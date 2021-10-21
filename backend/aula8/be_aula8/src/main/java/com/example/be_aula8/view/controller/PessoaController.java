@@ -5,6 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import com.example.be_aula8.compartilhado.PessoaDto;
 import com.example.be_aula8.model.Pessoa;
 import com.example.be_aula8.service.PessoaService;
@@ -47,7 +49,7 @@ public class PessoaController {
     }
 
      @PostMapping
-    public ResponseEntity<PessoaResponse> criarPessoa(@RequestBody PessoaRequest request) {
+    public ResponseEntity<PessoaResponse> criarPessoa(@RequestBody @Valid PessoaRequest request) {
         PessoaDto pessoaDto = mapper.map(request, PessoaDto.class);
         pessoaDto = servico.criarPessoa(pessoaDto);
         PessoaResponse response = mapper.map(pessoaDto, PessoaResponse.class);
