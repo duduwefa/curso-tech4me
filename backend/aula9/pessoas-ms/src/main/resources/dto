@@ -1,0 +1,20 @@
+pessoa.setNome(dto.getNome())
+
+dto.setNome(pessoa.getNome())
+
+
+dto.setContent(view.getContent())
+dto.setContentDate(view.getContentDate())
+
+
+origem: Usuario
+instancia da origem: Usuario usuario = new Usuario()
+
+destino: UsuarioDto usuarioDto = new UsuarioDto()
+Classe de destino (Class): UsuarioDto.class
+
+ModelMapper mapper = new ModelMapper()
+
+mapper.map(usuario, destino)
+
+

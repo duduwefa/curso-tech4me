@@ -1,11 +1,11 @@
 {
 	"folders": [
 		{
-			"name": "eureka-server",
-			"path": "eureka-server"
+			"path": "pessoas-ms"
 		},
 		{
-			"path": "../../../../jdk/microsservicos/pessoas-ms"
+			"name": "eureka-server",
+			"path": "eureka-server"
 		}
 	],
 	"settings": {
