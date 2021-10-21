@@ -57,7 +57,7 @@ public class PessoaController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     
-    @GetMapping(value="/{id}")
+    @GetMapping(value="/{id2}")
     public ResponseEntity<PessoaResponse> obterPorId(@PathVariable String id) {
         Optional<PessoaDto> pessoaDto = servico.obterPorId(id);
 
