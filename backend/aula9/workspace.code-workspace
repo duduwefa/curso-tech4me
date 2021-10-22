@@ -1,11 +1,16 @@
 {
 	"folders": [
 		{
+			"name": "eureka-server",
+			"path": "eureka-server"
+		},
+		{
+			"name": "pessoas-ms",
 			"path": "pessoas-ms"
 		},
 		{
-			"name": "eureka-server",
-			"path": "eureka-server"
+			"name": "zuul-server",
+			"path": "zuul-server"
 		}
 	],
 	"settings": {
